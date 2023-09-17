@@ -1,0 +1,58 @@
+.hide-button {
+    visibility: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    justify-content: center;
+    align-items: center;
+    background: lightgrey;
+}
+
+.button {
+    margin: 10px;
+    padding: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-style: none;
+    min-width: 80px;
+    border-radius: 5px;
+}
+
+.container.button {
+    background-color: lightblue;
+    radius: 5px;
+}
+
+.container.heading {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 50px;
+}
+
+.content {
+    flex: 1;
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container.result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.container.again {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
