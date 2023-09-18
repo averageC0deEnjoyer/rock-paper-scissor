@@ -9,25 +9,56 @@
 </head>
 <body>
     <h1>Rock, Paper, Scissor??</h1>
-    <div class="content">
-        <div class="container heading">
-            Player Choose:
+    <div class="container-big">
+        <div class="container-game">
+            <div class="container-player">
+                <div class="container heading player">
+                    <div class="text">Player Choose:</div>
+                    <div class="player-choice"></div>
+                </div>
+                <div class="selections">
+                    <div class="div-selection" id="rockdiv">
+                        <p class="selection-text" id="rocktext">Rock</p>
+                        <img src="img/rock.png" alt="rock" class="selection" id="rockimg">
+                    </div>
+                    <div class="div-selection" id="paperdiv">
+                        <p class="selection-text" id="papertext">Paper</p>
+                        <img src="img/paper.jpg" alt="paper" class="selection" id="paperimg">
+                    </div>
+                    <div class="div-selection" id="scissordiv">
+                        <p class="selection-text" id="scissortext">Scissor</p>
+                        <img src="img/scissor.png" alt="scissor" class="selection" id="scissorimg">
+                    </div>
+                </div>
+            </div>
+            <div class="container-robot">
+                <div class="container heading robot">
+                    <div class="text">Robot Choose:</div>
+                    <div class="robot-choice"></div>
+                </div>
+                <div class="selections">
+                    <div class="div-selection">
+                        <p class="selection-text">Rock</p>
+                        <img src="img/rock.png" alt="rock" class="selection">
+                    </div>
+                    <div class="div-selection">
+                        <p class="selection-text">Paper</p>
+                        <img src="img/paper.jpg" alt="paper" class="selection">
+                    </div>
+                    <div class="div-selection">
+                        <p class="selection-text">Scissor</p>
+                        <img src="img/scissor.png" alt="scissor" class="selection">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="container button">
-            <button class="button button-one" value="Rock">Rock</button>
-            <button class="button button-two" value="Paper">Paper</button>
-            <button class="button button-three" value="Scissor">Scissor</button>
-        </div>
-        <br>
         <div class="container result">
-            <p class="choice-result"></p>
-            <p class="sentence-result"></p>
+            <p class="sentence-result">Welcome to the game!</p>
             <p class="score-result"></p>
             <p class="end-result"></p>
         </div>
-        <br>
         <div class="container again">
-            <button class="play-again">Play Again?</button>
+            <button class="play-again hide-button">Play Again?</button>
         </div>
     </div>
 </body>

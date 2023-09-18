@@ -8,51 +8,71 @@ function getComputerChoice(){
 };
 
 
+document.addEventListener('click', playerSelect)
+function playerSelect(event) {
+    console.log(event.target);
+    element = event.target;
+    const rock = 'Rock';
+    const paper = 'Paper';
+    const scissor = 'Scissor';
+    if (element.classList.contains("div-selection") && element.id == ('rockdiv')){
+        playRound(rock);
+        console.log('rock submit');
+    } else if (element.classList.contains("selection-text") && element.id == ('rocktext')){
+        playRound(rock);
+        console.log('rock submit');
+    } else if (element.classList.contains("selection") && element.id == ('rockimg')){
+        playRound(rock);
+        console.log('rock submit')
+    } else if (element.classList.contains("div-selection") && element.id == ('paperdiv')){
+        playRound(paper);
+        console.log('paper submit');
+    } else if (element.classList.contains("selection-text") && element.id == ('papertext')){
+        playRound(paper);
+        console.log('paper submit'); 
+    } else if (element.classList.contains("selection") && element.id == ('paperimg')){
+        playRound(paper);
+        console.log('paper submit')
+    } else if (element.classList.contains("div-selection") && element.id == ('scissordiv')){
+        playRound(scissor);
+        console.log('scissor submit');
+    } else if (element.classList.contains("selection-text") && element.id == ('scissortext')){
+        playRound(scissor);
+        console.log('scissor submit'); 
+    } else if (element.classList.contains("selection") && element.id == ('scissorimg')){
+        playRound(scissor);
+        console.log('scissor submit')
+    }
+}
+
 function playRound(playerSelection){
     compSelection = getComputerChoice();
     let sentenceResult = document.querySelector('.sentence-result');
     let scoreResult = document.querySelector('.score-result');
-    let choiceResult = document.querySelector('.choice-result')
+    let robotChoice = document.querySelector('.robot-choice');
+    let playerChoice = document.querySelector('.player-choice');
+    playerChoice.textContent = playerSelection;
+    robotChoice.textContent = compSelection;
+    console.log(playerSelection);
+    console.log(compSelection);
     if (playerSelection == compSelection) {
-        choiceResult.textContent = `Player choose: ${playerSelection} | Computer choose: ${compSelection}`
         sentenceResult.textContent = 'Round Result: It\'s a tie!'
         scoreResult.textContent = `Player score: ${playerScore} | Computer score:${compScore}`
     } else if (playerSelection == 'Rock' && compSelection == 'Scissor' ||
               playerSelection == 'Scissor' && compSelection == 'Paper' ||
               playerSelection == 'Paper' && compSelection == 'Rock') {
-        choiceResult.textContent = `Player choose: ${playerSelection} | Computer choose: ${compSelection}`
         sentenceResult.textContent = `Round Result: Player win, ${playerSelection} beats ${compSelection}`
         playerScore++;
         scoreResult.textContent = `Player score: ${playerScore} | Computer score:${compScore}`
     } else if (compSelection == 'Rock' && playerSelection == 'Scissor' ||
               compSelection == 'Scissor' && playerSelection == 'Paper' ||
               compSelection == 'Paper' && playerSelection == 'Rock') {
-        choiceResult.textContent = `Player choose: ${playerSelection} | Computer choose: ${compSelection}`
         sentenceResult.textContent = `Round Result: Player lose, ${compSelection} beats ${playerSelection}`
         compScore++;
         scoreResult.textContent = `Player score: ${playerScore} | Computer score:${compScore}`
     }
+    checkWinner();
 };
-
-function playerSelect(){
-    const playerButtons = document.querySelectorAll('.button');
-    const endResult = document.querySelector('.end-result');
-    const playAgainButton = document.querySelector('.play-again');
-    playAgainButton.classList.add('hide-button')
-    playerButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            playerSelectValue = button.value;
-            playRound(playerSelectValue);    //playRound each time press button (bug over 2 hour) (dont put playRound outside this function, its async have to wait for input)
-            if(compScore >= 5 || playerScore >= 5){
-                showWinner();
-                playerButtons.forEach(button => { //have to use forEach cause its a NodeList
-                    button.classList.add('hide-button')});
-                playAgainButton.classList.remove('hide-button');
-                playAgain();
-            }
-        });
-    });
-}
 
 function resetScore(){
     const endResult = document.querySelector('.end-result');
@@ -64,6 +84,18 @@ function resetScore(){
     endResult.textContent = '';
     sentenceResult.textContent = '';
  };
+
+function checkWinner(){
+    const containerRobot = document.querySelector('.container-robot');
+    const containerPlayer = document.querySelector('.container-player');
+    const playAgainButton = document.querySelector('.play-again');
+    if(playerScore == 5 || compScore == 5){
+        showWinner();
+        playAgainButton.classList.remove('hide-button');
+        containerPlayer.classList.add('invisible');
+        containerRobot.classList.add('invisible');
+    }
+}
 
 
 function showWinner(){
@@ -77,18 +109,21 @@ function showWinner(){
     
 };
 
+const playAgainButton = document.querySelector('.play-again');
+playAgainButton.addEventListener('click',playAgain)
 function playAgain(){
-    const playerButtons = document.querySelectorAll('.button');
     const playAgainButton = document.querySelector('.play-again');
-    
-    playAgainButton.addEventListener('click', () => {
-        playerButtons.forEach(button => {
-            button.classList.remove('hide-button');
-        });
+    const playerChoice = document.querySelector('.player-choice');
+    const robotChoice = document.querySelector('.robot-choice')
+    const containerRobot = document.querySelector('.container-robot');
+    const containerPlayer = document.querySelector('.container-player');
         playAgainButton.classList.add('hide-button');
         resetScore(); //STACK EVENT IN ONE EVENTLISTENER
-    });
-}
+        playerChoice.textContent = '';
+        robotChoice.textContent = '';
+        containerRobot.classList.remove('invisible');
+        containerPlayer.classList.remove('invisible');
+    }
     
 //CAN STACK EVENT IN ONE EVENTLISTENER    
 //     playAgainButton.addEventListener('click', () => {
@@ -97,12 +132,7 @@ function playAgain(){
 //     playAgainButton.addEventListener('click', resetScore);    
 // }
 
-function startGame(){
-
-}
 
 
 
 
-
-playerSelect();
