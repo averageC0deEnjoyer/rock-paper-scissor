@@ -7,7 +7,7 @@ function getComputerChoice(){
     return choices[randomNum];
 };
 
-
+//learn new things, can select value using addEventListener. wait for click then assign value, then pass the value to another function
 document.addEventListener('click', playerSelect)
 function playerSelect(event) {
     console.log(event.target);
@@ -97,7 +97,6 @@ function checkWinner(){
     }
 }
 
-
 function showWinner(){
     const endResult = document.querySelector('.end-result');
     const playerButtons = document.querySelectorAll('.button');
@@ -117,12 +116,14 @@ function playAgain(){
     const robotChoice = document.querySelector('.robot-choice')
     const containerRobot = document.querySelector('.container-robot');
     const containerPlayer = document.querySelector('.container-player');
+    const sentenceResult = document.querySelector('.sentence-result');
         playAgainButton.classList.add('hide-button');
         resetScore(); //STACK EVENT IN ONE EVENTLISTENER
         playerChoice.textContent = '';
         robotChoice.textContent = '';
         containerRobot.classList.remove('invisible');
         containerPlayer.classList.remove('invisible');
+        sentenceResult.textContent = 'Welcome to the game!'
     }
     
 //CAN STACK EVENT IN ONE EVENTLISTENER    

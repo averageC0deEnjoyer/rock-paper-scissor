@@ -104,6 +104,13 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* transform: translate(-3%,-3%) */
+}
+
+.div-selection.player:hover {
+    background-color: lightgrey;
+    transform: translate(-2%,-2%);
+    transition: all 0.1s ease-in;
 }
 
 .play-again {
@@ -130,3 +137,4 @@ p {
     width: 350px;
     border-radius: 10px;
 }
+
